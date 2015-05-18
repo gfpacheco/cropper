@@ -1,11 +1,11 @@
 /*!
- * Cropper v0.9.3
+ * Cropper v0.9.4
  * https://github.com/fengyuanchen/cropper
  *
  * Copyright (c) 2014-2015 Fengyuan Chen and contributors
  * Released under the MIT license
  *
- * Date: 2015-05-10T07:25:08.257Z
+ * Date: 2015-05-18T16:25:36.813Z
  */
 
 (function (factory) {
@@ -1110,6 +1110,7 @@
 
     replace: function (url) {
       if (!this.disabled && url) {
+        this.options.data = null; // Remove previous data
         this.load(url);
       }
     },
@@ -1379,10 +1380,10 @@
         scaledHeight = options.height;
 
         if (scaledWidth) {
-          scaledHeight = scaledWidth / aspectRatio;
+          scaledHeight = Math.round(scaledWidth / aspectRatio);
           scaledRatio = scaledWidth / originalWidth;
         } else if (scaledHeight) {
-          scaledWidth = scaledHeight * aspectRatio;
+          scaledWidth = Math.round(scaledHeight * aspectRatio);
           scaledRatio = scaledHeight / originalHeight;
         }
       }
